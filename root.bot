@@ -1,0 +1,18 @@
+{
+    "name": "root",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "name": "http://localhost:3978/api/messages",
+            "id": "b80b7e40-364f-11ec-b9a1-d3a4fc0705f6",
+            "appId": "5a19fc6b-9c6c-4f65-97ca-c8ef44e4e6fb",
+            "appPassword": "wDBo2.fV7lo95M6cQvFof-FHs~.e6~h~-6",
+            "endpoint": "http://localhost:3978/api/messages"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "path": "C:\\Work\\Project\\bot-root\\root.bot",
+    "overrides": null
+}
