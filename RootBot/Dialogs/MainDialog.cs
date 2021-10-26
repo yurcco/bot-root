@@ -13,6 +13,22 @@ using Microsoft.Extensions.Logging;
 
 namespace Microsoft.BotBuilderSamples.RootBot.Dialogs
 {
+    public class SkillOptions
+    {
+        public string ActivityName { get; set; }
+
+
+
+        public string Language { get; set; }
+
+
+
+        public string AdditionalData { get; set; }
+
+
+
+        public string UserPrincipalName { get; set; }
+    }
     public class MainDialog : ComponentDialog
     {
         protected readonly ILogger Logger;
@@ -63,7 +79,16 @@ namespace Microsoft.BotBuilderSamples.RootBot.Dialogs
                 }
                 else
                 {
-                    var skillResult = await innerDc.BeginDialogAsync(nameof(SkillDialog), new BeginSkillDialogOptions() { Activity = innerDc.Context.Activity }, cancellationToken);
+                    SkillOptions skillOptions = new SkillOptions
+                    {
+                        ActivityName = "ApplicationFormDialog",
+                        Language = "ru-RU",
+                        UserPrincipalName = "admin@amdevwork.onmicrosoft.com"
+                    };
+                    var activity = (Activity)Activity.CreateEventActivity();
+                    activity.Name = "ApplicationFormDialog";
+                    activity.Value = skillOptions;
+                    var skillResult = await innerDc.BeginDialogAsync(nameof(SkillDialog), new BeginSkillDialogOptions() { Activity = activity }, cancellationToken);
                     return skillResult;
                 }
             }
